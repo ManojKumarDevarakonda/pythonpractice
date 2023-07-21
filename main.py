@@ -50,16 +50,19 @@ async def post_student(request):
     student = request.json
     in_memory_student_db.append(student)
     return response.json(student)
-@app.put("/")
-async def put_student(request,id) :
+@app.put("/<empId:int>")
+async def put_student(request,empId) :
     student = request.json
-    in_memory_student_db[id] = student 
+    in_memory_student_db[empId] = student 
     return response.json(student)
+@app.delete("/<empId:int>")
+async def delete_student(request,empId):
+    if empId < len(in_memory_student_db):
+        del in_memory_student_db[empId]
+        return response.json({"message": "Deleted student successfully"})
+    else:
+        return response.json({"message": "Student not found"}, status=404)
 
-@app.delete("/<id_:int>")
-async def delete_student(request,id_):
-    del in_memory_student_db[id_]
-    return response.json({"message":"Deleted student successfully"})
 
 if __name__ == "__main__" :
     app.run(host="0.0.0.0", port=8000, debug=True, auto_reload=True)
