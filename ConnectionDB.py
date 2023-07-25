@@ -20,3 +20,19 @@ cursor.close()
 conn.close()
 print (rows)
 
+# import psycopg2
+
+# from psycopg2 import Error
+
+# from sqlalchemy import create_engine ,Column,Integer,String
+
+# from sqlalchemy.orm import sessionmaker
+
+
+
+
+# DATABASE_URL = 'postgresql://postgres:1234567890@localhost:5432/testdb'
+
+# engine = create_engine(DATABASE_URL, echo = True)
+
+# Session = sessionmaker(bind = engine)
